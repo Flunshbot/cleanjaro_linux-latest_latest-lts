@@ -13,11 +13,11 @@ pkgname=(
 	"${pkgbase}-bbswitch"
 	"${pkgbase}-broadcom-wl"
 	"${pkgbase}-ndiswrapper"
-	"${pkgbase}-nvidia"
 	"${pkgbase}-nvidia-390xx"
+	"${pkgbase}-nvidia-430xx"
+	"${pkgbase}-nvidia-435xx"
 	"${pkgbase}-nvidiabl"
 	"${pkgbase}-r8168"
-	"${pkgbase}-rt3562sta"
 	"${pkgbase}-rtl8723bu"
 	"${pkgbase}-tp_smapi"
 	"${pkgbase}-vhba-module"
@@ -37,7 +37,6 @@ eol=(
 	420
 	50
 	51
-	52
 )
 
 package_linux-latest() {
@@ -115,7 +114,7 @@ package_linux-latest-nvidia-390xx(){
 }
 
 package_linux-latest-nvidia-430xx(){
-	pkgdesc="Legacy NVIDIA drivers for Linux (metapackage)"
+	pkgdesc="Long lived NVIDIA drivers for Linux (metapackage)"
 	depends=("linux${_kernelver}-nvidia-430xx")
 	for kernel in "${eol[@]}"; do
 		replaces+=("linux${kernel}-nvidia-430xx")
@@ -124,7 +123,7 @@ package_linux-latest-nvidia-430xx(){
 }
 
 package_linux-latest-nvidia-435xx(){
-	pkgdesc="Legacy NVIDIA drivers for Linux (metapackage)"
+	pkgdesc="Short lived NVIDIA drivers for Linux (metapackage)"
 	depends=("linux${_kernelver}-nvidia-435xx")
 	for kernel in "${eol[@]}"; do
 		replaces+=("linux${kernel}-nvidia-435xx")
