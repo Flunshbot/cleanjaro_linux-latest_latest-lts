@@ -4,18 +4,16 @@
 # Jonathon Fernyhough <jonathon at_manjaro dot.org>
 
 pkgbase=linux-latest
-pkgver=5.2
-pkgrel=3
+pkgver=5.3
+pkgrel=1
 pkgname=(
 	"${pkgbase}"
 	"${pkgbase}-headers"
 	"${pkgbase}-acpi_call"
 	"${pkgbase}-bbswitch"
 	"${pkgbase}-broadcom-wl"
-	"${pkgbase}-catalyst"
 	"${pkgbase}-ndiswrapper"
 	"${pkgbase}-nvidia"
-	"${pkgbase}-nvidia-340xx"
 	"${pkgbase}-nvidia-390xx"
 	"${pkgbase}-nvidiabl"
 	"${pkgbase}-r8168"
@@ -39,6 +37,7 @@ eol=(
 	420
 	50
 	51
+	52
 )
 
 package_linux-latest() {
@@ -88,15 +87,6 @@ package_linux-latest-broadcom-wl(){
 	done
 }
 
-package_linux-latest-catalyst(){
-	pkgdesc="AMD/ATI Catalyst drivers for linux. fglrx kernel module only (metapackage)"
-	depends=("linux${_kernelver}-catalyst")
-	for kernel in "${eol[@]}"; do
-		replaces+=("linux${kernel}-catalyst")
-		conflicts+=("linux${kernel}-catalyst")
-	done
-}
-
 package_linux-latest-ndiswrapper(){
 	pkgdesc="Module for NDIS (Windows Network Drivers) drivers supplied by vendors (metapackage)"
 	depends=("linux${_kernelver}-ndiswrapper")
@@ -115,21 +105,30 @@ package_linux-latest-nvidia(){
 	done
 }
 
-package_linux-latest-nvidia-340xx(){
-	pkgdesc="Legacy NVIDIA drivers for Linux (metapackage)"
-	depends=("linux${_kernelver}-nvidia-340xx")
-	for kernel in "${eol[@]}"; do
-		replaces+=("linux${kernel}-nvidia-340xx")
-		conflicts+=("linux${kernel}-nvidia-340xx")
-	done
-}
-
 package_linux-latest-nvidia-390xx(){
 	pkgdesc="Legacy NVIDIA drivers for Linux (metapackage)"
 	depends=("linux${_kernelver}-nvidia-390xx")
 	for kernel in "${eol[@]}"; do
 		replaces+=("linux${kernel}-nvidia-390xx")
 		conflicts+=("linux${kernel}-nvidia-390xx")
+	done
+}
+
+package_linux-latest-nvidia-430xx(){
+	pkgdesc="Legacy NVIDIA drivers for Linux (metapackage)"
+	depends=("linux${_kernelver}-nvidia-430xx")
+	for kernel in "${eol[@]}"; do
+		replaces+=("linux${kernel}-nvidia-430xx")
+		conflicts+=("linux${kernel}-nvidia-430xx")
+	done
+}
+
+package_linux-latest-nvidia-435xx(){
+	pkgdesc="Legacy NVIDIA drivers for Linux (metapackage)"
+	depends=("linux${_kernelver}-nvidia-435xx")
+	for kernel in "${eol[@]}"; do
+		replaces+=("linux${kernel}-nvidia-435xx")
+		conflicts+=("linux${kernel}-nvidia-435xx")
 	done
 }
 
@@ -148,15 +147,6 @@ package_linux-latest-r8168(){
 	for kernel in "${eol[@]}"; do
 		replaces+=("linux${kernel}-r8168")
 		conflicts+=("linux${kernel}-r8168")
-	done
-}
-
-package_linux-latest-rt3562sta(){
-	pkgdesc="Ralink RT3562 PCI WLAN adaptors kernel module (metapackage)"
-	depends=("linux${_kernelver}-rt3562sta")
-	for kernel in "${eol[@]}"; do
-		replaces+=("linux${kernel}-rt3562sta")
-		conflicts+=("linux${kernel}-rt3562sta")
 	done
 }
 
