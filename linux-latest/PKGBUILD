@@ -5,7 +5,7 @@
 
 pkgbase=linux-latest
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 pkgname=(
 	"${pkgbase}"
 	"${pkgbase}-headers"
@@ -203,6 +203,7 @@ package_linux-latest-zfs(){
 		conflicts+=("linux${kernel}-zfs")
 	done
 }
+
 
 
 
