@@ -5,7 +5,7 @@
 
 pkgbase=linux-latest
 pkgver=5.3
-pkgrel=2
+pkgrel=3
 pkgname=(
 	"${pkgbase}"
 	"${pkgbase}-headers"
@@ -13,9 +13,12 @@ pkgname=(
 	"${pkgbase}-bbswitch"
 	"${pkgbase}-broadcom-wl"
 	"${pkgbase}-ndiswrapper"
+	"${pkgbase}-nvidia-340xx"
 	"${pkgbase}-nvidia-390xx"
+	"${pkgbase}-nvidia-418xx"
 	"${pkgbase}-nvidia-430xx"
 	"${pkgbase}-nvidia-435xx"
+	"${pkgbase}-nvidia-440xx"
 	"${pkgbase}-nvidiabl"
 	"${pkgbase}-r8168"
 	"${pkgbase}-rtl8723bu"
@@ -96,12 +99,12 @@ package_linux-latest-ndiswrapper(){
 	done
 }
 
-package_linux-latest-nvidia(){
-	pkgdesc="NVIDIA drivers for Linux (metapackage)"
-	depends=("linux${_kernelver}-nvidia")
+package_linux-latest-nvidia-340xx(){
+	pkgdesc="Legacy NVIDIA drivers for Linux (metapackage)"
+	depends=("linux${_kernelver}-nvidia-340xx")
 	for kernel in "${eol[@]}"; do
-		replaces+=("linux${kernel}-nvidia")
-		conflicts+=("linux${kernel}-nvidia")
+		replaces+=("linux${kernel}-nvidia-340xx")
+		conflicts+=("linux${kernel}-nvidia-340xx")
 	done
 }
 
@@ -111,6 +114,15 @@ package_linux-latest-nvidia-390xx(){
 	for kernel in "${eol[@]}"; do
 		replaces+=("linux${kernel}-nvidia-390xx")
 		conflicts+=("linux${kernel}-nvidia-390xx")
+	done
+}
+
+package_linux-latest-nvidia-418xx(){
+	pkgdesc="Long lived NVIDIA drivers for Linux (metapackage)"
+	depends=("linux${_kernelver}-nvidia-418xx")
+	for kernel in "${eol[@]}"; do
+		replaces+=("linux${kernel}-nvidia-418xx")
+		conflicts+=("linux${kernel}-nvidia-418xx")
 	done
 }
 
@@ -129,6 +141,15 @@ package_linux-latest-nvidia-435xx(){
 	for kernel in "${eol[@]}"; do
 		replaces+=("linux${kernel}-nvidia-435xx")
 		conflicts+=("linux${kernel}-nvidia-435xx")
+	done
+}
+
+package_linux-latest-nvidia-440xx(){
+	pkgdesc="Long lived NVIDIA drivers for Linux (metapackage)"
+	depends=("linux${_kernelver}-nvidia-440xx")
+	for kernel in "${eol[@]}"; do
+		replaces+=("linux${kernel}-nvidia-440xx")
+		conflicts+=("linux${kernel}-nvidia-440xx")
 	done
 }
 
@@ -203,6 +224,8 @@ package_linux-latest-zfs(){
 		conflicts+=("linux${kernel}-zfs")
 	done
 }
+
+
 
 
 

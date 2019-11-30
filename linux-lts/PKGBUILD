@@ -4,7 +4,7 @@
 # Jonathon Fernyhough <jonathon at_manjaro dot.org>
 
 pkgbase=linux-lts
-pkgver=5.3
+pkgver=5.4
 pkgrel=1
 pkgname=(
 	"${pkgbase}"
@@ -12,14 +12,15 @@ pkgname=(
 	"${pkgbase}-acpi_call"
 	"${pkgbase}-bbswitch"
 	"${pkgbase}-broadcom-wl"
-	"${pkgbase}-catalyst"
 	"${pkgbase}-ndiswrapper"
-	"${pkgbase}-nvidia"
 	"${pkgbase}-nvidia-340xx"
 	"${pkgbase}-nvidia-390xx"
+	"${pkgbase}-nvidia-418xx"
+	"${pkgbase}-nvidia-430xx"
+	"${pkgbase}-nvidia-435xx"
+	"${pkgbase}-nvidia-440xx"
 	"${pkgbase}-nvidiabl"
 	"${pkgbase}-r8168"
-	"${pkgbase}-rt3562sta"
 	"${pkgbase}-rtl8723bu"
 	"${pkgbase}-tp_smapi"
 	"${pkgbase}-vhba-module"
@@ -90,30 +91,12 @@ package_linux-lts-broadcom-wl(){
 	done
 }
 
-package_linux-lts-catalyst(){
-	pkgdesc="AMD/ATI Catalyst drivers for linux. fglrx kernel module only (metapackage)"
-	depends=("linux${_kernelver}-catalyst")
-	for kernel in "${eol[@]}"; do
-		replaces+=("linux${kernel}-catalyst")
-		conflicts+=("linux${kernel}-catalyst")
-	done
-}
-
 package_linux-lts-ndiswrapper(){
 	pkgdesc="Module for NDIS (Windows Network Drivers) drivers supplied by vendors (metapackage)"
 	depends=("linux${_kernelver}-ndiswrapper")
 	for kernel in "${eol[@]}"; do
 		replaces+=("linux${kernel}-ndiswrapper")
 		conflicts+=("linux${kernel}-ndiswrapper")
-	done
-}
-
-package_linux-lts-nvidia(){
-	pkgdesc="NVIDIA drivers for Linux (metapackage)"
-	depends=("linux${_kernelver}-nvidia")
-	for kernel in "${eol[@]}"; do
-		replaces+=("linux${kernel}-nvidia")
-		conflicts+=("linux${kernel}-nvidia")
 	done
 }
 
@@ -132,6 +115,42 @@ package_linux-lts-nvidia-390xx(){
 	for kernel in "${eol[@]}"; do
 		replaces+=("linux${kernel}-nvidia-390xx")
 		conflicts+=("linux${kernel}-nvidia-390xx")
+	done
+}
+
+package_linux-lts-nvidia-418xx(){
+	pkgdesc="Long lived NVIDIA drivers for Linux (metapackage)"
+	depends=("linux${_kernelver}-nvidia-418xx")
+	for kernel in "${eol[@]}"; do
+		replaces+=("linux${kernel}-nvidia-418xx")
+		conflicts+=("linux${kernel}-nvidia-418xx")
+	done
+}
+
+package_linux-lts-nvidia-430xx(){
+	pkgdesc="Long lived NVIDIA drivers for Linux (metapackage)"
+	depends=("linux${_kernelver}-nvidia-430xx")
+	for kernel in "${eol[@]}"; do
+		replaces+=("linux${kernel}-nvidia-430xx")
+		conflicts+=("linux${kernel}-nvidia-430xx")
+	done
+}
+
+package_linux-lts-nvidia-435xx(){
+	pkgdesc="Short lived NVIDIA drivers for Linux (metapackage)"
+	depends=("linux${_kernelver}-nvidia-435xx")
+	for kernel in "${eol[@]}"; do
+		replaces+=("linux${kernel}-nvidia-435xx")
+		conflicts+=("linux${kernel}-nvidia-435xx")
+	done
+}
+
+package_linux-lts-nvidia-440xx(){
+	pkgdesc="Long lived NVIDIA drivers for Linux (metapackage)"
+	depends=("linux${_kernelver}-nvidia-440xx")
+	for kernel in "${eol[@]}"; do
+		replaces+=("linux${kernel}-nvidia-440xx")
+		conflicts+=("linux${kernel}-nvidia-440xx")
 	done
 }
 
@@ -215,3 +234,4 @@ package_linux-lts-zfs(){
 		conflicts+=("linux${kernel}-zfs")
 	done
 }
+
