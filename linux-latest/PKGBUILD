@@ -8,7 +8,6 @@ pkgver=5.4
 pkgrel=1
 pkgname=(
 	"${pkgbase}"
-	"${pkgbase}-headers"
 	"${pkgbase}-acpi_call"
 	"${pkgbase}-bbswitch"
 	"${pkgbase}-broadcom-wl"
@@ -50,16 +49,6 @@ package_linux-latest() {
 	for kernel in "${eol[@]}"; do
 		replaces+=("linux${kernel}")
 		conflicts+=("linux${kernel}")
-	done
-}
-
-package_linux-latest-headers() {
-	pkgdesc="Header files and scripts for building modules for the latest kernel (metapackage)"
-	depends=("linux${_kernelver}-headers")
-	groups=()
-	for kernel in "${eol[@]}"; do
-		replaces+=("linux${kernel}-headers")
-		conflicts+=("linux${kernel}-headers")
 	done
 }
 
